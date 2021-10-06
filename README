@@ -1,0 +1,115 @@
+================
+     About
+================
+
+SMPQ is StormLib MPQ archiving utility. This utility is designed for full
+manipulating with Blizzard MPQ archives. It supports extracting, appending,
+renaming and deleting files in MPQ archives. It also can create MPQ archive.
+SMPQ can access to different type of MPQ archives and version. It support
+encrypted, compressed, partial and patched MPQ archives with version 1-4.
+SMPQ is free open source command line utility written in C/C++ which use
+multiplatform C++ StormLib library.
+
+Part of SMPQ is KDE4 KIO plugin which add support for all KDE4 applications
+(e.g. Konqueror, Dolphin, Kate, ... and all KDE4 open/save dialogs) access to
+MPQ archives like to directory or network drive (or FTP). This is simple way
+how to integrate MPQ support on KDE4 desktop (There is no need to use some MPQ
+viewer/editor. All KDE4 application can open MPQ archives in read/write mode).
+
+Author: Pali Rohár <pali.rohar@gmail.com>
+Version: 1.6
+License: GNU GPL v3
+Homepage: https://launchpad.net/smpq
+
+================
+  How to build
+================
+
+Dependencies for SMPQ:
+ * ANSI C90 compiler (gcc works fine)
+ * StormLib (minimal version 9.20) from http://www.zezula.net/en/mpq/download.html#StormLib
+ * CMake (minimal version 2.6) from http://www.cmake.org/cmake/resources/software.html
+
+Additional dependencies for KDE4 KIO plugin:
+ * C++ 98 compiler (g++ works fine)
+ * KDE4 libs headers (part of kdelibs package) from http://www.kde.org/download/
+
+Additional dependencies for Windows NSIS Installer:
+ * NSIS from http://nsis.sourceforge.net/
+ * UPX from http://upx.sourceforge.net/
+
+Building on Debian/*buntu and Debian like Linux distributions:
+  $ sudo apt-get install fakeroot debhelper cmake libstorm-dev libstorm-listfiles kdelibs5-dev
+  $ dpkg-buildpackage -b -rfakeroot
+  $ sudo dpkg -i ../*.deb
+
+  Ubuntu packages are built in SMPQ PPA on https://launchpad.net/~pali/+archive/smpq
+
+Building on other *nix:
+
+ Commands to build only SMPQ command line utility (without KDE4 KIO plugin):
+  $ rm -rf build && mkdir -p build && cd build
+  $ cmake -DWITH_KDE=OFF -DCMAKE_INSTALL_PREFIX=/usr ..
+  $ make
+  $ sudo make install
+
+ Commands to build SMPQ with KDE4 KIO plugin:
+  $ rm -rf build && mkdir -p build && cd build
+  $ cmake -DCMAKE_INSTALL_PREFIX=`kde4-config --prefix` ..
+  $ make
+  $ sudo make install
+
+ Commands to build only KDE4 KIO plugin:
+  $ rm -rf build && mkdir -p build && cd build
+  $ cmake -DWITH_CMD=OFF -DCMAKE_INSTALL_PREFIX=`kde4-config --prefix` ..
+  $ make
+  $ sudo make install
+
+Building on Windows:
+
+ Commands to build only SMPQ command line utility:
+  Download and unpack SMPQ to C:\smpq. Open command line in folder C:\smpq
+  C:\smpq> del /r /q build && md build && cd build
+  C:\smpq\build> cmake -DWITH_KDE=OFF ..
+  C:\smpq\build> make
+  This will build executable C:\smpq\build\smpq.exe
+
+ Commands to build SMPQ command line utility into Windows NSIS Installer:
+  Download and unpack SMPQ to C:\smpq. Open command line in folder C:\smpq
+  C:\smpq> del /r /q build && md build && cd build
+  C:\smpq\build> cmake -DWITH_KDE=OFF -DWITH_NSIS=ON ..
+  C:\smpq\build> make
+  This will build installer executable C:\smpq\build\SMPQ-<VERSION>.exe
+
+Note:
+ Sometimes after (re)installing KDE4 KIO plugin is needed to restart KDE4.
+
+================
+   How to use
+================
+
+SMPQ command line utility:
+ For detailed info see
+ * user manpage: $ man 1 smpq
+ * runtime help: $ smpq --help
+
+KDE4 KIO plugin:
+ Open Konqueror, Dolphin or other KDE4 file manager and simply open MPQ archive
+
+================
+   Changelog
+================
+
+See file CHANGELOG
+
+================
+     Links
+================
+
+SMPQ Homepage: https://launchpad.net/smpq
+CMake homepage: http://www.cmake.org
+KDE homepage: http://www.kde.org
+NSIS homepage: http://nsis.sourceforge.net
+UPX homepage: http://upx.sourceforge.net
+StormLib library: http://www.zezula.net/en/mpq/stormlib.html
+MPQ documentation: http://wiki.devklog.net/index.php?title=The_MoPaQ_Archive_Format

@@ -1,0 +1,46 @@
+smpq 1.6
+  * Fix spelling
+  * Check for StromLib version before building
+  * Show StormLibCopyright in --version and --license
+  * Use only ASCII characters on console
+  * Set correct manpage encoding (UTF-8)
+  * Replace no-break space by normal space
+  * Fix TYPE_MAX macro
+
+smpq 1.5
+  * Use archive list file if -N is not specified
+  * Added support to only create empty mpq archive without any files
+  * Use strcasecmp only where is needed (winapi alternative is _stricmp)
+  * Added support for partial archives, Add examples to help
+  * Rewrite smpq to C - StormLib 8.20 has finally C compatible header files
+  * Use build date instead hardcoded in man page
+  * Do not use variable length arrays and anonymous variadic macros
+  * Set max file count to at least 6
+  * Better support for Windows and MSVC compiler
+  * kio_smpq - Do not ignore internal listfile
+  * Use StormLib 9.20
+
+smpq 1.4
+  * Remove option -I (--index) - not used in new version of stormlib library
+  * Some minor and code style fixes
+  * Update debian files, fixed lintian warnings/errors
+
+smpq 1.3
+  * Cleaned CMakeLists.txt
+  * Fixed printing verbose message
+  * Fixed multiplatform using size_t
+  * Decrease MPQ max file count after deleting file
+  * Depends on StormLib version 8.02
+
+smpq 1.2
+  * Fixed using signed/unsigned integers
+  * Replaced option for setting hash table size by setting maximum file count
+  * Rewrited hash table size to maximum file count (deleted from StromLib)
+  * Autodetect maximum file count of archive when appending files
+
+smpq 1.1
+  * Fixed compilation on target x86_64
+  * Fixed default value of Hash Table Size
+
+smpq 1.0
+  * Final release 1.0
